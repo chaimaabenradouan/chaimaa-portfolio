@@ -675,22 +675,21 @@ section h2 span {
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .home-content {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  
-  .home-image {
-    order: -1;
-  }
-  
-  .home-image img {
-    max-width: 320px;
-  }
-  
-  nav ul {
+    grid-template-columns: 1fr 1fr; /* garde côte à côte */
     gap: 2rem;
   }
+
+  .home-image {
+    order: 0; /* remet position normale */
+  }
+
+  .home-image img {
+    max-width: 180px; /* adapte taille mobile */
+  }
 }
+
+
+
 
 @media (max-width: 768px) {
   nav {
