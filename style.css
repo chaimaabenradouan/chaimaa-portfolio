@@ -695,12 +695,14 @@ section h2 span {
   }
 
   /* HOME — correction espace */
-  .home {
-    padding: 70px 5% 10px;
-    min-height: unset !important;
-    height: auto;
-    align-items: flex-start;
-  }
+ .home {
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  padding: 80px 7% 40px;
+  position: relative;
+  z-index: 1;
+}
 
   .home-content {
     grid-template-columns: 1fr;
