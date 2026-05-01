@@ -1,5 +1,3 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600;700&display=swap');
 
 :root {
@@ -33,7 +31,6 @@ body {
   overflow-x: hidden;
 }
 
-
 body::before {
   content: '';
   position: fixed;
@@ -49,7 +46,7 @@ body::before {
   pointer-events: none;
 }
 
-
+/* NAV */
 nav {
   position: fixed;
   top: 0;
@@ -104,7 +101,6 @@ nav ul li a {
   color: var(--text-dim);
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.9rem;
   position: relative;
   transition: all 0.3s;
   text-transform: uppercase;
@@ -132,6 +128,7 @@ nav ul li a:hover::after {
   width: 100%;
 }
 
+/* HOME */
 .home {
   min-height: 100vh;
   display: flex;
@@ -214,7 +211,7 @@ nav ul li a:hover::after {
   box-shadow: var(--glow);
 }
 
-/* HOME IMAGE - FIXED */
+/* HOME IMAGE — cadre supprimé, image simple */
 .home-image {
   position: relative;
   display: flex;
@@ -222,34 +219,15 @@ nav ul li a:hover::after {
   align-items: center;
 }
 
-.home-image::before {
-  content: '';
-  position: absolute;
-  top: -15px;
-  left: -15px;
-  right: 15px;
-  bottom: 15px;
-  border: 2px solid var(--primary);
-  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-  z-index: -1;
-}
-
+/* Cadres désactivés */
+.home-image::before,
 .home-image::after {
-  content: '';
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: -15px;
-  bottom: -15px;
-  border: 2px solid var(--secondary);
-  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-  z-index: -1;
-  opacity: 0.5;
+  display: none;
 }
 
 .home-image img {
   width: 100%;
-  max-width: 380px;
+  max-width: 350px;
   height: auto;
   clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
@@ -672,89 +650,148 @@ section h2 span {
   text-decoration: underline;
 }
 
-/* RESPONSIVE */
+/* ===================== RESPONSIVE ===================== */
+
 @media (max-width: 1024px) {
   .home-content {
-    grid-template-columns: 1fr 1fr; /* garde côte à côte */
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
 
-  .home-image {
-    order: 0; /* remet position normale */
-  }
-
   .home-image img {
-    max-width: 180px; /* adapte taille mobile */
+    max-width: 280px;
   }
 }
 
-
-
-
 @media (max-width: 768px) {
+  /* NAV */
   nav {
     padding: 1rem 5%;
   }
-  
+
   .logo {
     font-size: 1rem;
   }
-  
+
   nav ul {
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+    justify-content: center;
   }
-  
-  section {
-    padding: 80px 5%;
+
+  nav ul li a {
+    font-size: 0.75rem;
   }
-  
+
+  /* HOME — correction espace */
   .home {
-    padding: 100px 5% 60px;
+    padding: 80px 5% 20px;
+    min-height: auto;
   }
-  
-  .home-text {
+
+  .home-content {
+    grid-template-columns: 1fr;
     text-align: center;
+    gap: 1.5rem;
   }
-  
+
   .home-text p {
-    margin: 0 auto 2rem;
+    margin: 0 auto 1.5rem;
+    font-size: 1rem;
   }
-  
+
+  .home-text h1 {
+    font-size: 2.2rem;
+    letter-spacing: -1px;
+  }
+
   .btn {
     display: block;
     text-align: center;
     margin: 0 auto;
     max-width: 200px;
   }
-  
+
+  /* IMAGE mobile — centrée, sans cadre */
+  .home-image {
+    order: -1;
+    justify-content: center;
+  }
+
+  .home-image img {
+    max-width: 160px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* SECTIONS — réduction espace */
+  section {
+    padding: 50px 5%;
+  }
+
+  section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* ABOUT */
+  #about p {
+    padding: 2rem;
+    font-size: 1rem;
+  }
+
+  /* EDUCATION */
+  #education li {
+    padding: 1.5rem;
+  }
+
+  /* SKILLS */
   .skills-container {
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 1rem;
   }
-  
+
+  /* PROJECTS */
   .projects-container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  /* CONTACT */
+  .contact-form {
+    padding: 2rem;
+  }
+
+  .info-container {
+    padding: 2rem;
   }
 }
 
 @media (max-width: 480px) {
-  .home-text h1 {
-    font-size: 2rem;
+  .home {
+    padding: 75px 5% 10px;
   }
-  
-  section h2 {
-    font-size: 2rem;
-  }
-  
+
   .home-image img {
-    max-width: 260px;
+    max-width: 140px;
   }
-  
+
+  .home-text h1 {
+    font-size: 1.8rem;
+  }
+
+  section {
+    padding: 40px 4%;
+  }
+
   .skill {
-    padding: 1.5rem 0.8rem;
+    padding: 1.2rem 0.5rem;
+  }
+
+  .skill i {
+    font-size: 2rem;
   }
 }
 
